@@ -1,0 +1,70 @@
+works on server and client arch
+
+
+server<------------>client
+request->client krta hai
+response->client krta hai
+
+json tab bhejna chahiye jab client side alag lag jagah jaise mobile browser pe render ho warna html mast hai
+
+| Method | Purpose                 | Example               |
+| ------ | ----------------------- | --------------------- |
+| GET    | Read resource           | `GET /api/users`      |
+| POST   | Create new resource     | `POST /api/users`     |
+| PUT    | Update entire resource  | `PUT /api/users/1`    |
+| PATCH  | Update part of resource | `PATCH /api/users/1`  |
+| DELETE | Delete resource         | `DELETE /api/users/1` |
+
+
+| Concept               | Explanation                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| **Resource**          | A logical entity (e.g., user, product, blog) represented by a URL endpoint         |
+| **Stateless**         | Server doesn’t store any session info. Each request must contain everything needed |
+| **Client-Server**     | The frontend (client) and backend (server) are separate systems                    |
+| **Cacheable**         | Data can be cached for better performance                                          |
+| **Uniform Interface** | Standard operations (GET, POST, PUT, DELETE) across all resources                  |
+
+
+1)POST /api/users
+Body: { "name": "John", "email": "john@mail.com" }
+
+router.post("/", async (req, res) => {
+  const user = new User(req.body);
+  await user.save();
+  res.status(201).json(user);
+});
+
+2)get
+ ek id wale user ko get kro
+
+router.get("/:id", async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (!user) return res.status(404).json({ message: "User not found" });
+  res.json(user);
+});
+
+sabhi ko get kro 
+
+router.get("/", async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
+
+
+3)PUT
+PUT /api/users/:id
+
+
+router.put("/:id", async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.json(user);
+});
+
+
+4)Delete
+DELETE /api/users/:id
+
+router.delete("/:id", async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.status(204).send(); // No content
+});

@@ -1,0 +1,29 @@
+types
+
+| Type                 | Direction       | Example                               |
+| -------------------- | --------------- | ------------------------------------- |
+| **Request Headers**  | Client → Server | `Authorization`, `Content-Type`       |
+| **Response Headers** | Server → Client | `Set-Cookie`, `Cache-Control`, `CORS` |
+| **General Headers**  | Both            | `Connection`, `Date`                  |
+
+
+access
+app.get('/headers', (req, res) => {
+  console.log(req.headers);         // all headers
+  console.log(req.headers['host']); // specific header
+  console.log(req.get('User-Agent')); // more readable
+  res.send("Check console for headers");
+});
+
+
+Setting Response Headers
+app.get('/set-header', (req, res) => {
+  res.set('X-Powered-By', 'Express + ChatGPT');
+  res.set('Content-Type', 'text/plain');
+  res.send("Headers set!");
+});
+
+
+CORS
+const cors = require('cors');
+app.use(cors()); // enables Access-Control-Allow-Origin: *

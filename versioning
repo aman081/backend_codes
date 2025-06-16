@@ -1,0 +1,12 @@
+if
+^4.18.2
+
+4->major release ekdum cautious ho jaoo 
+
+18->recommended bug fix secures reakhne ke liye
+
+2->minor fixes which is optional
+
+^  -> we can use from ^4.18.2 to 5.0.0 excluding the last one 
+
+~ ->minor fixes wale part ko kr sakte ho change

@@ -1,0 +1,39 @@
+stateful--> and Stateless
+
+Types of Authentication
+✅ Common Methods:
+| Type                  | Description                                 |
+| --------------------- | ------------------------------------------- |
+| **Basic Auth**        | Uses `username:password` in HTTP headers    |
+| **Session-based**     | Server stores user sessions using cookies   |
+| **Token-based (JWT)** | User gets a token after login; used in APIs |
+| **OAuth 2.0**         | Login via Google/Facebook/GitHub            |
+| **Biometric**         | Face, fingerprint (used in mobile apps)     |
+
+How JWT Authentication Works (Standard for APIs)
+JWT (JSON Web Token) is most common for REST APIs.
+
+📌 Workflow:
+User logs in (POST /login)
+
+Server verifies credentials
+
+Server issues a signed token (JWT)
+
+Client stores token (e.g., in localStorage)
+
+Client sends token in Authorization header for protected requests
+
+Server verifies token before granting access
+
+What is JWT?
+JWT (JSON Web Token) is a compact, URL-safe way to represent claims securely between two parties.
+
+👉 It is a stateless authentication system, meaning the server doesn’t need to store session info — all info is in the token itself.
+
+jwt 3 parts
+Header.Payload.Signature
+
+eg eyJhbGciOi... (Header)
+.eyJ1c2VySWQiOiIxMjM0... (Payload)
+.h6JN73ahP0T... (Signature)

@@ -1,0 +1,11 @@
+What is an HTTP Status Code?
+An HTTP status code is a 3-digit number sent in an HTTP response that tells the client what happened with their request.
+
+| Category | Range   | Meaning       |
+| -------- | ------- | ------------- |
+| 1xx      | 100–199 | Informational |
+| 2xx      | 200–299 | Success       |
+| 3xx      | 300–399 | Redirection   |
+| 4xx      | 400–499 | Client error  |
+| 5xx      | 500–599 | Server error  |
+ 

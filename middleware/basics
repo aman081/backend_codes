@@ -1,0 +1,38 @@
+What is Middleware in Express.js?
+In Express, middleware functions are functions that execute during the request-response cycle. They can:
+
+Run any code (e.g., logging)
+
+Modify req or res objects
+
+End the request-response cycle
+
+Pass control to the next middleware function using next()
+
+
+const express = require('express');
+const app = express();
+
+// 🔍 Custom Logger Middleware
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+  next(); // pass control to next middleware/route
+};
+
+app.use(logger); // apply logger to all routes
+
+app.get('/', (req, res) => {
+  res.send('Home Page');
+});
+
+app.listen(8000, () => console.log("Server running on port 8000"));
+
+
+
+kuch build in middleware
+
+| Middleware             | Purpose                           |
+| ---------------------- | --------------------------------- |
+| `express.json()`       | Parses JSON bodies                |
+| `express.urlencoded()` | Parses URL-encoded data           |
+| `express.static()`     | Serves static files (images, etc) |
